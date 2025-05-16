@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Расписание{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">🗓 Моё расписание</h2>
+
+    <table class="table table-striped table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>День</th>
+                <th>Начало</th>
+                <th>Конец</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shift in schedule %}
+                <tr>
+                    <td>{{ shift.get_day_display }}</td>
+                    <td>{{ shift.start_time }}</td>
+                    <td>{{ shift.end_time }}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3" class="text-center text-muted">Нет запланированных смен.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <h4 class="mt-4">➕ Добавить смену</h4>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="mb-3">{{ schedule_form.as_p }}</div>
+        <button type="submit" class="btn btn-success">
+            <i class="bi bi-calendar-plus"></i> Добавить
+        </button>
+    </form>
+</div>
+{% endblock %}
+
+

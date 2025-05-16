@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block title %}Добавить отчёт{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4">📝 Добавить месячный отчёт</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-save"></i> Сохранить
+        </button>
+        <a href="{% url 'reports' %}" class="btn btn-outline-secondary ms-2">
+            <i class="bi bi-arrow-left-circle"></i> Назад к отчётам
+        </a>
+    </form>
+</div>
+{% endblock %}

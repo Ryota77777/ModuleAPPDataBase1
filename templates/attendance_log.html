@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block title %}Журнал посещаемости{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="mb-4 text-center">📒 Журнал посещаемости</h2>
+
+    <h4>➕ Добавить запись</h4>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-4 mb-3">
+                <label for="id_date" class="form-label">Дата</label>
+                {{ attendance_form.date }}
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="id_time" class="form-label">Время</label>
+                {{ attendance_form.time }}
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="id_event" class="form-label">Событие</label>
+                {{ attendance_form.event }}
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">
+            <i class="bi bi-plus-circle"></i> Добавить
+        </button>
+    </form>
+
+    <h4>📋 История событий</h4>
+    <table class="table table-bordered table-hover">
+        <thead class="table-light">
+            <tr>
+                <th>Дата</th>
+                <th>Время</th>
+                <th>Событие</th>
+                <th>Часы</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in log_entries %}
+                <tr>
+                    <td>{{ entry.date }}</td>
+                    <td>{{ entry.time }}</td>
+                    <td>{{ entry.get_event_display }}</td>
+                    <td>
+                        {% if entry.hours > 0 %}
+                            <strong class="text-success">{{ entry.hours }}</strong>
+                        {% else %}
+                            <span class="text-muted">—</span>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="4" class="text-center text-muted">Нет записей посещаемости.</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'profile' %}" class="btn btn-outline-secondary mt-3">
+        <i class="bi bi-arrow-left-circle"></i> Назад в профиль
+    </a>
+</div>
+{% endblock %}
+
+
+
+
+
+

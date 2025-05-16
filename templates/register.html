@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+<div style="max-width: 600px; margin: 60px auto; background: var(--white); padding: 40px; border-radius: 12px; box-shadow: 0 8px 16px rgba(0,0,0,0.1);">
+
+    <h2 style="text-align: center; color: var(--primary); margin-bottom: 30px;">Регистрация</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        
+        <div style="margin-bottom: 20px;">
+            <label for="id_username">Имя пользователя</label>
+            <input type="text" name="username" id="id_username" value="{{ form.username.value }}" class="form-input">
+            {% for error in form.username.errors %}
+                <div class="form-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="id_email">Email</label>
+            <input type="email" name="email" id="id_email" value="{{ form.email.value }}" class="form-input">
+            {% for error in form.email.errors %}
+                <div class="form-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-bottom: 20px;">
+            <label for="id_password1">Пароль</label>
+            <input type="password" name="password1" id="id_password1" value="{{ form.password1.value }}" class="form-input">
+            <div id="passwordHelp" class="form-hint" style="display: none;">
+                Пароль должен быть не менее 8 символов, содержать буквы и цифры.
+            </div>
+            {% for error in form.password1.errors %}
+                <div class="form-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <div style="margin-bottom: 30px;">
+            <label for="id_password2">Подтверждение пароля</label>
+            <input type="password" name="password2" id="id_password2" value="{{ form.password2.value }}" class="form-input">
+            {% for error in form.password2.errors %}
+                <div class="form-error">{{ error }}</div>
+            {% endfor %}
+        </div>
+
+        <button type="submit" class="button" style="width: 100%;">Зарегистрироваться</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("id_password1").addEventListener("focus", function() {
+        document.getElementById("passwordHelp").style.display = "block";
+    });
+    document.getElementById("id_password1").addEventListener("blur", function() {
+        document.getElementById("passwordHelp").style.display = "none";
+    });
+</script>
+{% endblock %}
+
+
+
+
+
+

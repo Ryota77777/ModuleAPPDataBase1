@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Отчёты{% endblock %}
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">📊 Месячные отчёты</h2>
+
+    <h4>📝 Добавить отчёт вручную</h4>
+    <form method="post" class="mb-4">
+        {% csrf_token %}
+        <div class="mb-3">
+            {{ report_form.as_p }}
+        </div>
+        <button type="submit" class="btn btn-primary">
+            <i class="bi bi-upload"></i> Сохранить отчёт
+        </button>
+    </form>
+
+    <h4>📁 Список отчётов</h4>
+    <ul class="list-group">
+        {% for report in reports %}
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    <strong>{{ report.month }}</strong><br>
+                    <small class="text-muted">
+                        Всего часов: {{ report.total_hours }} ч.
+                        {% if report.overtime_hours %}
+                            | Переработка: <span class="text-danger">{{ report.overtime_hours }} ч.</span>
+                        {% endif %}
+                    </small>
+                </div>
+            </li>
+        {% empty %}
+            <li class="list-group-item text-muted">Отчётов пока нет.</li>
+        {% endfor %}
+    </ul>
+
+    <a href="{% url 'profile' %}" class="btn btn-outline-secondary mt-4">
+        <i class="bi bi-arrow-left-circle"></i> Назад в профиль
+    </a>
+</div>
+{% endblock %}
+
+
+
+

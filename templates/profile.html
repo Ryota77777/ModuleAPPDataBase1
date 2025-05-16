@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg">
+        <div class="card-body">
+            <h2 class="card-title text-center mb-4">Добро пожаловать, {{ user.get_full_name }}!</h2>
+            <div class="row g-4 align-items-center">
+                <div class="col-md-4 text-center">
+                    {% if profile.profile_picture %}
+                        <img src="{{ profile.profile_picture.url }}" class="img-fluid rounded-circle border" style="max-width: 200px;" alt="Фото профиля">
+                    {% else %}
+                        <img src="https://via.placeholder.com/200" class="img-fluid rounded-circle border" alt="Фото профиля">
+                    {% endif %}
+                </div>
+                <div class="col-md-8">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item"><strong>Должность:</strong> {{ profile.position }}</li>
+                        <li class="list-group-item"><strong>Отдел:</strong> {{ profile.department }}</li>
+                        <li class="list-group-item"><strong>Всего отработано часов:</strong> {{ total_hours }}</li>
+                        <li class="list-group-item"><strong>Ближайшая смена:</strong> {{ next_shift }}</li>
+                    </ul>
+                    <div class="mt-4 text-end">
+                        <a href="{% url 'edit_profile' %}" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i> Редактировать профиль
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+
