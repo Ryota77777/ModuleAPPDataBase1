@@ -29,7 +29,8 @@ project/
 ├── app/
 │   ├── forms.py
 │   ├── models.py
-│   ├── views.py     
+│   ├── views.py 
+│   ├── etc..    
 │   └── templates/
 │       ├── home.html
 │       ├── login.html
