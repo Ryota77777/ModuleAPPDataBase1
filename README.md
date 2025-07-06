@@ -48,19 +48,19 @@ project/
 ## Скриншоты
 
 ### Аунтефикация
-![Скриншот страницы аунтефикации](https://github.com/Ryota77777/ModuleAppDatabase1/blob/main/templates/auth.png?raw=true)
+![Скриншот страницы аунтефикации](https://github.com/Ryota77777/ModuleAppDataBase1/blob/main/templates/auth.png?raw=true)
 
 ### Главная страница
-![Скриншот главной страницы](https://github.com/Ryota77777/ModuleAppDatabase1/blob/main/templates/mainy.png?raw=true)
+![Скриншот главной страницы](https://github.com/Ryota77777/ModuleAppDataBase1/blob/main/templates/mainy.png?raw=true)
 
 ### Профиль
-![Скриншот профиля](https://github.com/Ryota77777/ModuleAppDatabase1/blob/main/templates/profile.png?raw=true)
+![Скриншот профиля](https://github.com/Ryota77777/ModuleAppDataBase1/blob/main/templates/profile.png?raw=true)
 
 ### Расписание
-![Скриншот расписания](https://github.com/Ryota77777/ModuleAppDatabase1/blob/main/templates/schedule.png?raw=true)
+![Скриншот расписания](https://github.com/Ryota77777/ModuleAppDataBase1/blob/main/templates/schedule.png?raw=true)
 
 ### Журнал
-![Скриншот журнала](https://github.com/Ryota77777/ModuleAppDatabase1/blob/main/templates/journal.png?raw=true)
+![Скриншот журнала](https://github.com/Ryota77777/ModuleAppDataBase1/blob/main/templates/journal.png?raw=true)
 
 ```
 
@@ -69,8 +69,8 @@ project/
 1. Клонируйте репозиторий:
 
 ```bash
-git clone https://github.com/your_username/your_repo.git
-cd your_repo
+git clone https://github.com/Ryota77777/ModuleAppDataBase1.git
+cd ModuleAppDataBase1
 ```
 
 2. Создайте и активируйте виртуальное окружение:
